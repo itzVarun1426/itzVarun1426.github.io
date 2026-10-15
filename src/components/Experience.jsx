@@ -8,7 +8,7 @@ const JOBS = [
   { org: 'GDGC DYPCOE', role: 'DSA & CP Lead', when: '2023 – Present' },
   { org: 'AI & CV Research', role: 'Signature Verification & Cheque Fraud Detection', when: '2024' },
   { org: 'UAV Flight Systems', role: '3D UAV Flight Path Optimization Research', when: '2024' },
-  { org: 'LeetCode / CP', role: '700+ Solved // Contest Rating 1400+', when: 'Active' },
+  { org: 'LeetCode / CP', role: '600+ Solved // Contest Rating 1400+', when: 'Active' },
 ];
 
 const ART = '/main site/img/constellations/';

@@ -69,14 +69,14 @@ export default function About() {
               <span className="record-key">Research</span>
               <span className="record-sep">:</span>
               <span className="record-val">
-                3D Flight Path Optimization for UAVs Using Nature-Inspired Optimization
+                Offline Signature Verification &amp; Cheque Fraud Detection Using Siamese CNNs &middot; 3D Flight Path Optimization for UAVs Using Nature-Inspired Optimization
               </span>
             </div>
             <div className="record-row">
               <span className="record-key">Achievements</span>
               <span className="record-sep">:</span>
               <span className="record-val">
-                700+ LeetCode Solved &middot; Claude Foundations &middot; AWS Cloud Practitioner &middot; Git Foundation &middot; IBM Data Analytics
+                SIH Finalist 2025 &middot; 600+ LeetCode Solved &middot; Claude Foundations &middot; AWS Cloud Practitioner &middot; Git Foundation &middot; IBM Data Analytics
               </span>
             </div>
           </div>

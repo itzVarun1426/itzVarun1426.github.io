@@ -1,2 +1,243 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
+
+/* =========================================================
+   Experience Constellation - Enhanced Text Visibility & Size
+   ========================================================= */
+.star-label {
+  background: rgba(5, 8, 20, 0.88) !important;
+  padding: 0.4rem 0.7rem !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.65) !important;
+  max-width: 25ch !important;
+  transition: all 0.3s ease !important;
+}
+
+.star.on .star-label {
+  background: rgba(10, 18, 38, 0.96) !important;
+  border-color: rgba(56, 189, 248, 0.75) !important;
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.45) !important;
+}
+
+.star-org {
+  font-size: 1.02rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.star-role {
+  font-size: 0.84rem !important;
+  color: #e2e8f0 !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+  margin-top: 0.2rem !important;
+}
+
+.star-when {
+  font-size: 0.7rem !important;
+  letter-spacing: 0.12em !important;
+  color: #38bdf8 !important;
+  font-weight: 500 !important;
+  margin-top: 0.25rem !important;
+}
+
+@media (max-width: 768px) {
+  .star-label {
+    max-width: 20ch !important;
+    padding: 0.28rem 0.52rem !important;
+  }
+  .star-org {
+    font-size: 0.9rem !important;
+  }
+  .star-role {
+    font-size: 0.76rem !important;
+  }
+  .star-when {
+    font-size: 0.65rem !important;
+  }
+}
+
+/* =========================================================
+   Mobile Hamburger & Drawer Navigation
+   ========================================================= */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 38px;
+  height: 38px;
+  background: rgba(10, 16, 29, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 8px;
+  padding: 9px 8px;
+  cursor: pointer;
+  z-index: 260;
+  transition: all 0.3s ease;
+}
+
+.hamburger-btn:hover {
+  border-color: rgba(56, 189, 248, 0.75);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
+}
+
+.hamburger-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #e2e8f0;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hamburger-btn.active .line-1 {
+  transform: translateY(6px) rotate(45deg);
+  background-color: #38bdf8;
+}
+
+.hamburger-btn.active .line-2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger-btn.active .line-3 {
+  transform: translateY(-6px) rotate(-45deg);
+  background-color: #38bdf8;
+}
+
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 17, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 240;
+  animation: fadeInBackdrop 0.25s ease-out forwards;
+}
+
+.mobile-menu-drawer {
+  position: fixed;
+  top: 4.8rem;
+  left: 1rem;
+  right: 1rem;
+  background: rgba(8, 13, 28, 0.97);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.85), 0 0 35px rgba(56, 189, 248, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 1.25rem 1rem;
+  z-index: 250;
+  animation: slideDownDrawer 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem 0.8rem;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+  margin-bottom: 0.6rem;
+}
+
+.mobile-menu-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.mobile-close-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.mobile-close-btn:hover {
+  color: #fff;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mobile-nav-list li a {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.92rem;
+  color: #e2e8f0;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  background: rgba(10, 16, 29, 0.4);
+}
+
+.mobile-nav-list li a:hover,
+.mobile-nav-list li a:focus {
+  background: rgba(56, 189, 248, 0.14);
+  color: #38bdf8;
+  transform: translateX(4px);
+  box-shadow: inset 2px 0 0 #38bdf8;
+}
+
+.mobile-nav-list .nav-num {
+  font-size: 0.72rem;
+  color: #38bdf8;
+  opacity: 0.7;
+}
+
+@keyframes fadeInBackdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDownDrawer {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .hamburger-btn {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .hamburger-btn {
+    display: none !important;
+  }
+  .mobile-menu-drawer,
+  .mobile-menu-backdrop {
+    display: none !important;
+  }
+}
