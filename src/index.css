@@ -241,3 +241,28 @@
     display: none !important;
   }
 }
+
+/* =========================================================
+   Skills Category Filter Dots, Cloud Tags & Mobile Touch
+   ========================================================= */
+.filter-dot[data-cat="languages"] { background: #8fcaff; }
+.filter-dot[data-cat="frontend"]  { background: #818cf8; }
+.filter-dot[data-cat="backend"]   { background: #34d399; }
+.filter-dot[data-cat="cloud"]     { background: #38bdf8; }
+.filter-dot[data-cat="other"]     { background: #f472b6; }
+
+.cloud-tag[data-cat="languages"] { color: #8fcaff; }
+.cloud-tag[data-cat="frontend"]  { color: #818cf8; }
+.cloud-tag[data-cat="backend"]   { color: #34d399; }
+.cloud-tag[data-cat="cloud"]     { color: #38bdf8; }
+.cloud-tag[data-cat="other"]     { color: #f472b6; }
+
+.cloud-tag {
+  background-color: transparent !important;
+}
+
+.cloud-stage {
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}

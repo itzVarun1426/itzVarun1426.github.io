@@ -19,7 +19,7 @@ export default function Contact() {
       </p>
 
       <div className="contact-grid reveal" data-delay="3">
-        <a href="mailto:varunnagote@example.com" className="contact-card">
+        <a href="mailto:varunnagote@gmail.com" className="contact-card">
           <span>Email</span> &rarr;
         </a>
         <a
@@ -47,7 +47,7 @@ export default function Contact() {
           <span>LeetCode</span> &rarr;
         </a>
         <a
-          href="https://wa.me/8605866254"
+          href="https://wa.me/918605866254"
           target="_blank"
           rel="noopener noreferrer"
           className="contact-card"
@@ -55,7 +55,7 @@ export default function Contact() {
           <span>WhatsApp</span> &rarr;
         </a>
         <a
-          href="https://drive.google.com/file/d/1NYzKZVEK61hjrTiyJXbT4GjgL_sDe14Y/view"
+          href="https://drive.google.com/drive/folders/1OyD_ewKORXbwwlMSz6ARTxXKfllrNlje?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="contact-card"

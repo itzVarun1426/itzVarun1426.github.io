@@ -26,23 +26,28 @@ export default function SkillsCloud() {
       points: [],
     };
 
-    const FONT = { 3: 0.9, 2: 0.7, 1: 0.56 };
-
     function sizeCloud() {
-      cloud.flat = stage.clientWidth < 560;
-      stage.classList.toggle('flat', cloud.flat);
-      if (cloud.flat) {
-        for (const p of cloud.points) {
-          p.el.style.cssText = 'font-size:' + FONT[p.el.dataset.weight] + 'rem';
-        }
-        return;
-      }
+      cloud.flat = false;
+      stage.classList.remove('flat');
       const r = stage.getBoundingClientRect();
-      const K = 1.2;
-      const OVAL = 1.18;
-      const roomX = (r.width / 2 - (cloud.maxHalf || 110) - 8) / (K * OVAL);
-      const roomY = (r.height / 2 - 16) / K;
-      const rad = Math.max(110, Math.min(r.width * 0.36, roomX, roomY));
+      const isMobile = r.width < 580;
+
+      const FONT_MAP = isMobile
+        ? { 3: 0.74, 2: 0.60, 1: 0.50 }
+        : { 3: 0.9, 2: 0.7, 1: 0.56 };
+
+      for (const p of cloud.points) {
+        p.el.style.fontSize = FONT_MAP[p.el.dataset.weight] + 'rem';
+      }
+
+      const K = isMobile ? 1.08 : 1.2;
+      const OVAL = isMobile ? 1.05 : 1.18;
+      const maxH = isMobile ? 65 : (cloud.maxHalf || 110);
+      const roomX = (r.width / 2 - maxH - 6) / (K * OVAL);
+      const roomY = (r.height / 2 - 14) / K;
+      const rad = isMobile
+        ? Math.max(90, Math.min(r.width * 0.35, roomX > 70 ? roomX : 105, roomY))
+        : Math.max(110, Math.min(r.width * 0.36, roomX, roomY));
       cloud.rx = rad * OVAL;
       cloud.ry = rad;
     }
@@ -52,7 +57,6 @@ export default function SkillsCloud() {
       cloud.points = tags.map((tag, i) => {
         const phi = Math.acos(-1 + (2 * i + 1) / n);
         const theta = Math.sqrt(n * Math.PI) * phi;
-        tag.style.fontSize = FONT[tag.dataset.weight] + 'rem';
         return {
           el: tag,
           x: Math.cos(theta) * Math.sin(phi),
@@ -115,11 +119,14 @@ export default function SkillsCloud() {
     };
 
     const onPointerDown = (e) => {
-      if (cloud.flat) return;
       cloud.dragging = true;
       cloud.lastX = e.clientX;
       cloud.lastY = e.clientY;
-      stage.setPointerCapture(e.pointerId);
+      try {
+        stage.setPointerCapture(e.pointerId);
+      } catch {
+        /* ignore */
+      }
     };
 
     const onPointerMove = (e) => {
@@ -134,8 +141,15 @@ export default function SkillsCloud() {
       cloud.velX = -dy * 0.0016;
     };
 
-    const stopDragging = () => {
+    const stopDragging = (e) => {
       cloud.dragging = false;
+      if (e && e.pointerId) {
+        try {
+          stage.releasePointerCapture(e.pointerId);
+        } catch {
+          /* ignore */
+        }
+      }
     };
 
     stage.addEventListener('pointerdown', onPointerDown);
